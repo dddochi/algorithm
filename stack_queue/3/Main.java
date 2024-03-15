@@ -30,14 +30,14 @@ public class Main {
             int item = 0;
             //인형 집기
             for(int j = 0; j < n; j++){
-                if(board[moves[i]-1][j]!= 0){
-                    item = board[moves[i]-1][j]; //인형 아이템 get
-                    board[moves[i]-1][j] = 0; //인형 뽑인 곳은 0으로 처리
+                if(board[j][moves[i]-1]!=0){
+                    item = board[j][moves[i]-1]; //인형 아이템 get
+                    board[j][moves[i]-1] = 0; //인형 뽑인 곳은 0으로 처리
+                    break;
                 }
             }
             //바구니에 인형 넣기
-            
-            if(!stack.isEmpty() &&stack.lastElement() == item){ //같은 인형 2번 연속 -> 제거
+            if(!stack.isEmpty() && stack.lastElement() == item){ //같은 인형 2번 연속 -> 제거
                 stack.pop();
                 count = count + 2;
 
@@ -48,5 +48,27 @@ public class Main {
         }
         return count;
     } 
+
+    public static int solution2(int[][] board, int[] moves){
+        int answer = 0;
+        Stack<Integer> stack = new Stack<>();
+        for(int pos : moves){
+            for(int i = 0; i < board.length; i++ ){//board.length = 2차원 배열의 행 길이
+                if(board[i][pos-1]!= 0){
+                    int tmp = board[i][pos-1];
+                    board[i][pos-1] = 0;
+                    if(!stack.isEmpty() && tmp == stack.peek()){
+                        answer += 2;
+                        stack.pop();
+                    }
+                    else{
+                        stack.push(tmp);
+                    }
+                    break;
+                }
+            }
+        }
+        return answer;
+    }
     
 }
