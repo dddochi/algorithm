@@ -1,7 +1,6 @@
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Scanner;
+import java.util.*;
 
+//Queue - 공주 구하기
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
