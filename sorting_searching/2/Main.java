@@ -14,6 +14,7 @@ public class Main {
     }  
     //혼자 풀어본 코드
     //버블 정렬
+    //강사님 코드와 동일
     public static int[] solution(int n, int[] arr){
         for(int i = 0; i < n - 1; i++){
             boolean isChanged = false;
