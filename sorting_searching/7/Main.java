@@ -17,7 +17,9 @@ public class Main {
             System.out.println();
         }
 
-    }   
+    }  
+    //혼자 풀어본 코드
+    //출력은 제대로 나오나 , 오답 뜸 
     public static int[][] solution(int n, int[][] points){
        //2차원 array -> 정렬
        //(2, 1) -> 
@@ -47,4 +49,5 @@ public class Main {
        }
        return points;
     } 
+    
 }
