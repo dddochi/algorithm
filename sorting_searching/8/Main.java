@@ -45,6 +45,7 @@ public class Main {
                 break;
             }
             else if(arr[mid] > m) rt = mid - 1;
+            else lt = mid + 1;
         }
     }   
 }
