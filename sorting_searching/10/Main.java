@@ -19,24 +19,29 @@ public class Main {
         while (lt <= rt) {
             int mid = (lt + rt) / 2;
             int ep = arr[0];
-            int count = 1;
-            for(int i = 0; i < n; i++){
-                if(arr[i] - ep >= mid){
-                    ep = arr[i];
-                    count++;
-                }
+            if(count(arr, mid) == c){ //ok 
+                lt = mid + 1;
+                answer = mid;
             }
-            if(count < c){
-                rt = mid -1;
-            }
-            else if(count > c){
+            else if(count(arr, mid) > c){ 
                 lt = mid + 1;
             }
-            else{
-                answer = mid;
+            else{//거리가 줄어야함
+                rt = mid -1;
             }
             
         }  
         return answer;  
+    }
+    public static int count(int[] arr, int mid){
+        int count = 1;
+        int ep = 1;
+        for(int i = 1; i < arr.length; i++){
+            if(arr[i] - ep >= mid){
+                ep = arr[i];
+                count++;
+            }
+        }
+        return count;
     }
 }
