@@ -56,4 +56,25 @@ public class Main {
         }
 
     }
+    //강사님 코드 참고해서 연습
+    public static void BFS_(Node root) {
+        Queue<Node> Q = new LinkedList<>();
+        Q.offer(root);
+        int L = 0;
+        while (!Q.isEmpty()) {
+            int len = Q.size();
+            System.out.print("L " + L + " : ");
+            for (int i = 0; i < len; i++) {
+                Node item = Q.poll();
+                System.out.print(item.data + " ");
+                if(item.lt != null)
+                Q.offer(item.lt);
+                if(item.rt != null)
+                Q.offer(item.rt);
+
+            }
+            System.out.println();
+            L++;
+        }
+    }
 }
