@@ -38,10 +38,7 @@ public class Main {
             }
         }
     }  
-    //강사님 코드
-    //+ main에다가 'ch[1] = 1;'' 추가 (DFS(1)호출전)
-    //ArrayList<ArrayList<Integer>> graph
-    public static void _DFS(){}
+    
 }
 // 5 9 
 // 1 2
