@@ -1,43 +1,44 @@
 //시도 2
-//BFS 사용
 import java.util.*;
 public class Main {
-    static int n, change;
+    static int n;
     static int answer = Integer.MAX_VALUE;
     static Integer[] coins;   
     static boolean flag = false;
-    static int count;
-    public static int BFS(){
-        Queue<Integer> queue = new LinkedList<>();
-        while (change - coins[0] > 0) {
-            change = change - coins[0];
-            count++;
+    static int count = 0;
+    public static void DFS(int change, int count){
+        // System.out.println("inside loop");
+        if(flag == true) return;
+        if(change < 0) return;
+        if(change == 0){
+            answer = Math.min(answer, count);
+            flag = true;
+            return;
         }
-        queue.offer(coins[0] && !queue.isEmpty());
-        while (change > 0 ) { // or change > 0
-            int cur = queue.poll();
-            for(int i = 0; i < queue.size(); i++){
-                count++;
-                for(int i = 0; i < n; i++){
-                    queue.offer(coins[i]);
-                    if(change - coins[i] >=0){
-                        change = change - coins[i];
-                    }
-                }
+        else{
+            for(int i = 1; i < n; i++){
+                DFS(change - coins[i], count+1);
             }
         }
-        
     }
     public static void main(String[] args) {
-    
+        
         Scanner scanner = new Scanner(System.in);
         n = scanner.nextInt(); //동전의 종류
         coins = new Integer[n];
         for(int i = 0; i < n; i++){
             coins[i] = scanner.nextInt();
         }
-        Arrays.sort(coins, Collections.reverseOrder());
-        change = scanner.nextInt(); //거스름돈
-        System.out.println(BFS(););
+        Arrays.sort(coins, Collections.reverseOrder()); //오름차순 - 0번 인덱스가 가장 큰 동전
+        int change = scanner.nextInt(); //거스름돈
+        int maxCoin = coins[0];
+        while (change - maxCoin >= 0) {
+            change -= maxCoin;
+            count++;
+            // System.out.println("inner count");
+        }
+        DFS(change, count);
+        
+        System.out.println(answer);
     }    
 }
