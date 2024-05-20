@@ -29,7 +29,7 @@ public class Main {
         for(int i = 0; i < n; i++){
             coins[i] = scanner.nextInt();
         }
-        Arrays.sort(coins, Collections.reverseOrder()); //오름차순 - 0번 인덱스가 가장 큰 동전
+        Arrays.sort(coins, Collections.reverseOrder()); //내림차순 - 0번 인덱스가 가장 큰 동전
         int change = scanner.nextInt(); //거스름돈
         int maxCoin = coins[0];
         while (change - maxCoin >= 0) {
