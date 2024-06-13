@@ -1,5 +1,4 @@
 //강사님 코드
-
 import java.util.*;
 
 public class Main {
